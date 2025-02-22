@@ -18,26 +18,31 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# relative paths for each 
+
+diabetes_path = os.path.join(base_dir, "diabetes_model.sav")
+heart_disease_path = os.path.join(base_dir, "heart_disease_model.sav")
+parkinsons_path = os.path.join(base_dir, "parkinsons_model.sav")
+css_path = os.path.join(base_dir, "styles.css")
 
 # Set page configuration
 st.set_page_config(page_title="Health Assistant",
                    layout="wide",
                    page_icon="🧑‍⚕️")
 
-# getting the working directory of the main.py
-working_dir = os.path.dirname(os.path.abspath(__file__))
-
 # loading the saved models
 
 diabetes_model = pickle.load(
-    open(r'C:\Programs\Learning\techathon_project\diabetes_model.sav', 'rb'))
+    open(f'{diabetes_path}', 'rb'))
 heart_disease_model = pickle.load(
-    open(r'C:\Programs\Learning\techathon_project\heart_disease_model.sav', 'rb'))
+    open(f'{heart_disease_path}', 'rb'))
 parkinsons_model = pickle.load(
-    open(r'C:\Programs\Learning\techathon_project\parkinsons_model.sav', 'rb'))
 
 # Function to interact with the Gemini Pro API
 
+    open(f'{parkinsons_path}', 'rb'))
 
 def is_health_related(user_input):
 
@@ -63,7 +68,7 @@ def get_gemini_response(user_input):
 
 
 # Adding stylesheet
-st.markdown('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">' + '<style>' + open(r'C:\Programs\Learning\techathon_project\styles.css',
+st.markdown('<link href="C:/Users/prathamesh kolhe/OneDrive/Desktop/Coding/Techathon/final_project/techathonProject/styles.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">' + '<style>' + open(f'{css_path}',
             'r').read() + '</style>', unsafe_allow_html=True)
 
 # sidebar for navigation
