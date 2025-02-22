@@ -68,7 +68,7 @@ def get_gemini_response(user_input):
 
 
 # Adding stylesheet
-st.markdown('<link href="C:/Users/prathamesh kolhe/OneDrive/Desktop/Coding/Techathon/final_project/techathonProject/styles.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">' + '<style>' + open(f'{css_path}',
+st.markdown('<link href=f"{css_path}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">' + '<style>' + open(f'{css_path}',
             'r').read() + '</style>', unsafe_allow_html=True)
 
 # sidebar for navigation
