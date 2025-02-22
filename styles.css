@@ -1,0 +1,11 @@
+
+
+* {
+    background-color: #a0a;
+    color: #0a0;
+    font-size: large;
+}
+.element {
+    color: var(--bs-primary-text-emphasis);
+    background-color: var(--bs-primary-bg-subtle);
+  }
