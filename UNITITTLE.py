@@ -60,11 +60,9 @@ def is_health_related(user_input):
 
 def get_gemini_response(user_input):
     if not is_health_related(user_input):
-        f = 0
-        return "Please ask a health-related question.", f
+        return 0
     else:
-        response = model.generate_content(user_input)
-        return response
+        return 1
 
 
 # Adding stylesheet
@@ -111,8 +109,11 @@ if selected == 'General Assistance':
     ask = st.button('Ask')
 
     if ask:
-        res = get_gemini_response(question)
-        st.success(getattr(res, 'text'))
+        if get_gemini_response(question):
+            response = model.generate_content(question)
+            st.success(getattr(response, 'text'))
+        else:
+            st.error("Please ask a health related question.")
 
     # Define model with system role
 
