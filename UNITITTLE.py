@@ -61,18 +61,13 @@ def is_health_related(user_input):
 
 def get_gemini_response(user_input):
     if not is_health_related(user_input):
-        f = 0
-        return "Please ask a health-related question.", f
         return 0
     else:
-        response = model.generate_content(user_input)
-        return response
         return 1
 
 
 # Adding stylesheet
-st.markdown('<link href=f"{css_path}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">' + '<style>' + open(f'{css_path}',
-            'r').read() + '</style>', unsafe_allow_html=True)
+st.markdown('<link href=f"{css_path}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">', unsafe_allow_html=True)
 
 # sidebar for navigation
 with st.sidebar:
@@ -114,8 +109,6 @@ if selected == 'General Assistance':
     ask = st.button('Ask')
 
     if ask:
-        res = get_gemini_response(question)
-        st.success(getattr(res, 'text'))
         if get_gemini_response(question):
             response = model.generate_content(question)
             st.success(getattr(response, 'text'))
